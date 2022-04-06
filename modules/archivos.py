@@ -2,11 +2,7 @@ import pandas as pd
 
 numero_alumnos = 16
 
-def crearDiccionario():
-    datos = pd.read_csv('./modules/calificaciones.csv', on_bad_lines='skip')
-    print(datos)
-
-def notaMedia():
+def crearDiccionarios():
     alumnos = []
     datos = pd.read_csv("./modules/calificaciones.csv", header=0 , sep =";")
     for i in range(numero_alumnos):
@@ -21,6 +17,9 @@ def notaMedia():
             'Practicas': datos['Practicas'][i],
             'Ordinario Practicas': datos['OrdinarioPracticas'][i],
         })
-    print(alumnos)
+    return alumnos
+
+def notaMedia():
+    alumnos = crearDiccionarios()
 
 notaMedia()
